@@ -1,3 +1,5 @@
+**Note about this fork:** This is an attempt to use the `nix-ros-overlay` without needing to use `lopsided98`'s custom nixpkgs `ros-nix` branch.
+
 # ROS overlay for the Nix package manager
 
 ### Easily install the [Robot Operating System (ROS)](http://www.ros.org/) on any Linux distribution
