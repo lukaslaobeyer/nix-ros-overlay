@@ -24,6 +24,9 @@ let
   overrides = rosSelf: rosSuper: with rosSelf.lib; {
     # ROS package overrides/fixups
 
+    urdfdom = self.urdfdom;
+    urdfdom-headers = self.urdfdom-headers;
+
     ament-cmake-core = rosSuper.ament-cmake-core.overrideAttrs ({
       propagatedBuildInputs ? [], ...
     }: {
