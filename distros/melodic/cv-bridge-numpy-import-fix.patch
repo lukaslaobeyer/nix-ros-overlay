@@ -1,0 +1,12 @@
+diff --git a/src/module.hpp b/src/module.hpp
+index 92153ac..397e14a 100644
+--- a/src/module.hpp
++++ b/src/module.hpp
+@@ -37,6 +37,7 @@ PyObject* pyopencv_from(const cv::Mat& m);
+ static int do_numpy_import( )
+ {
+     import_array( );
++    return 0;
+ }
+ #else
+ static void do_numpy_import( )

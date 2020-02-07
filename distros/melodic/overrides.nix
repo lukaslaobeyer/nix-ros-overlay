@@ -14,6 +14,14 @@ rosSelf: rosSuper: with rosSelf.lib; {
     ];
   });
 
+  cv-bridge = rosSuper.cv-bridge.overrideAttrs ({
+    patches ? [], ...
+  }: {
+    patches = patches ++ [
+      ./cv-bridge-numpy-import-fix.patch
+    ];
+  });
+
   gazeboSimulator = self.gazeboSimulator // {
     gazebo = self.gazeboSimulator.gazebo9;
   };
