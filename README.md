@@ -21,12 +21,10 @@ Want to use ROS, but don't want to run Ubuntu? This project uses the power of [N
 Turtlebot 3 simulation in Gazebo:
 ```
 nix-shell \
-  -I nixpkgs=https://github.com/lopsided98/nixpkgs/archive/nix-ros.tar.gz \
   -I nix-ros-overlay=https://github.com/lopsided98/nix-ros-overlay/archive/master.tar.gz \
   --option extra-substituters 'https://ros.cachix.org' \
   --option trusted-public-keys 'cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= ros.cachix.org-1:dSyZxI8geDCJrwgvCOHDoAfOm5sV1wCPjBkKL+38Rvo=' \
   '<nix-ros-overlay/examples/turtlebot3-gazebo.nix>'
-export TURTLEBOT3_MODEL=burger
 # If not on NixOS, nixGL (https://github.com/guibou/nixGL) is needed for OpenGL support
 roslaunch turtlebot3_gazebo turtlebot3_world.launch
 # Spawn a new nix-shell in a new terminal and then:

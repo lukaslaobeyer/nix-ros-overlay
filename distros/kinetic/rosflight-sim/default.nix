@@ -5,12 +5,12 @@
 { lib, buildRosPackage, fetchurl, catkin, eigen, gazebo-plugins, gazebo-ros, gazeboSimulator, geometry-msgs, roscpp, rosflight-firmware, rosflight-msgs }:
 buildRosPackage {
   pname = "ros-kinetic-rosflight-sim";
-  version = "1.0.0-r1";
+  version = "1.3.1-r1";
 
   src = fetchurl {
-    url = "https://github.com/rosflight/rosflight-release/archive/release/kinetic/rosflight_sim/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "50e9095e43cb549af5deb4a00b393971084674c33e175b4c1650e5f69d30e9d5";
+    url = "https://github.com/rosflight/rosflight-release/archive/release/kinetic/rosflight_sim/1.3.1-1.tar.gz";
+    name = "1.3.1-1.tar.gz";
+    sha256 = "180368072bd4d9aab0e7304c69444ca4e03e3a7acc7b5f0af34f4eb4caf0fea0";
   };
 
   buildType = "catkin";

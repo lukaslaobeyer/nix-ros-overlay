@@ -84,6 +84,8 @@ self: super: {
 
  ament-cmake-version = self.callPackage ./ament-cmake-version {};
 
+ ament-cmake-virtualenv = self.callPackage ./ament-cmake-virtualenv {};
+
  ament-cmake-xmllint = self.callPackage ./ament-cmake-xmllint {};
 
  ament-copyright = self.callPackage ./ament-copyright {};
@@ -120,9 +122,15 @@ self: super: {
 
  ament-uncrustify = self.callPackage ./ament-uncrustify {};
 
+ ament-virtualenv = self.callPackage ./ament-virtualenv {};
+
  ament-xmllint = self.callPackage ./ament-xmllint {};
 
  angles = self.callPackage ./angles {};
+
+ apex-containers = self.callPackage ./apex-containers {};
+
+ apex-test-tools = self.callPackage ./apex-test-tools {};
 
  automotive-autonomy-msgs = self.callPackage ./automotive-autonomy-msgs {};
 
@@ -146,6 +154,8 @@ self: super: {
 
  cartographer-ros-msgs = self.callPackage ./cartographer-ros-msgs {};
 
+ cascade-lifecycle-msgs = self.callPackage ./cascade-lifecycle-msgs {};
+
  class-loader = self.callPackage ./class-loader {};
 
  common-interfaces = self.callPackage ./common-interfaces {};
@@ -163,6 +173,10 @@ self: super: {
  console-bridge-vendor = self.callPackage ./console-bridge-vendor {};
 
  control-msgs = self.callPackage ./control-msgs {};
+
+ costmap-converter = self.callPackage ./costmap-converter {};
+
+ costmap-converter-msgs = self.callPackage ./costmap-converter-msgs {};
 
  costmap-queue = self.callPackage ./costmap-queue {};
 
@@ -360,6 +374,14 @@ self: super: {
 
  gmock-vendor = self.callPackage ./gmock-vendor {};
 
+ gps-msgs = self.callPackage ./gps-msgs {};
+
+ gps-tools = self.callPackage ./gps-tools {};
+
+ gps-umd = self.callPackage ./gps-umd {};
+
+ gpsd-client = self.callPackage ./gpsd-client {};
+
  gtest-vendor = self.callPackage ./gtest-vendor {};
 
  image-common = self.callPackage ./image-common {};
@@ -375,6 +397,10 @@ self: super: {
  interactive-markers = self.callPackage ./interactive-markers {};
 
  intra-process-demo = self.callPackage ./intra-process-demo {};
+
+ joint-state-publisher = self.callPackage ./joint-state-publisher {};
+
+ joint-state-publisher-gui = self.callPackage ./joint-state-publisher-gui {};
 
  joy = self.callPackage ./joy {};
 
@@ -392,9 +418,13 @@ self: super: {
 
  kobuki-ftdi = self.callPackage ./kobuki-ftdi {};
 
+ kobuki-ros = self.callPackage ./kobuki-ros {};
+
  kobuki-ros-interfaces = self.callPackage ./kobuki-ros-interfaces {};
 
  laser-geometry = self.callPackage ./laser-geometry {};
+
+ laser-proc = self.callPackage ./laser-proc {};
 
  launch = self.callPackage ./launch {};
 
@@ -412,6 +442,8 @@ self: super: {
 
  libcurl-vendor = self.callPackage ./libcurl-vendor {};
 
+ libg2o = self.callPackage ./libg2o {};
+
  libphidget22 = self.callPackage ./libphidget22 {};
 
  libyaml-vendor = self.callPackage ./libyaml-vendor {};
@@ -423,6 +455,20 @@ self: super: {
  logging-demo = self.callPackage ./logging-demo {};
 
  map-msgs = self.callPackage ./map-msgs {};
+
+ marti-can-msgs = self.callPackage ./marti-can-msgs {};
+
+ marti-common-msgs = self.callPackage ./marti-common-msgs {};
+
+ marti-nav-msgs = self.callPackage ./marti-nav-msgs {};
+
+ marti-perception-msgs = self.callPackage ./marti-perception-msgs {};
+
+ marti-sensor-msgs = self.callPackage ./marti-sensor-msgs {};
+
+ marti-status-msgs = self.callPackage ./marti-status-msgs {};
+
+ marti-visualization-msgs = self.callPackage ./marti-visualization-msgs {};
 
  message-filters = self.callPackage ./message-filters {};
 
@@ -479,6 +525,8 @@ self: super: {
  nav-msgs = self.callPackage ./nav-msgs {};
 
  navigation2 = self.callPackage ./navigation2 {};
+
+ nmea-msgs = self.callPackage ./nmea-msgs {};
 
  nonpersistent-voxel-layer = self.callPackage ./nonpersistent-voxel-layer {};
 
@@ -544,23 +592,19 @@ self: super: {
 
  plansys2-msgs = self.callPackage ./plansys2-msgs {};
 
- plansys2-multidomain-example = self.callPackage ./plansys2-multidomain-example {};
-
- plansys2-patrol-navigation-example = self.callPackage ./plansys2-patrol-navigation-example {};
-
  plansys2-pddl-parser = self.callPackage ./plansys2-pddl-parser {};
 
  plansys2-planner = self.callPackage ./plansys2-planner {};
 
  plansys2-problem-expert = self.callPackage ./plansys2-problem-expert {};
 
- plansys2-simple-example = self.callPackage ./plansys2-simple-example {};
-
  plansys2-terminal = self.callPackage ./plansys2-terminal {};
 
  pluginlib = self.callPackage ./pluginlib {};
 
  poco-vendor = self.callPackage ./poco-vendor {};
+
+ pointcloud-to-laserscan = self.callPackage ./pointcloud-to-laserscan {};
 
  px4-msgs = self.callPackage ./px4-msgs {};
 
@@ -588,6 +632,12 @@ self: super: {
 
  quality-of-service-demo-py = self.callPackage ./quality-of-service-demo-py {};
 
+ rc-dynamics-api = self.callPackage ./rc-dynamics-api {};
+
+ rc-genicam-api = self.callPackage ./rc-genicam-api {};
+
+ rcdiscover = self.callPackage ./rcdiscover {};
+
  rcl = self.callPackage ./rcl {};
 
  rcl-action = self.callPackage ./rcl-action {};
@@ -607,6 +657,8 @@ self: super: {
  rclcpp = self.callPackage ./rclcpp {};
 
  rclcpp-action = self.callPackage ./rclcpp-action {};
+
+ rclcpp-cascade-lifecycle = self.callPackage ./rclcpp-cascade-lifecycle {};
 
  rclcpp-components = self.callPackage ./rclcpp-components {};
 
@@ -830,6 +882,12 @@ self: super: {
 
  shared-queues-vendor = self.callPackage ./shared-queues-vendor {};
 
+ sick-scan2 = self.callPackage ./sick-scan2 {};
+
+ slam-toolbox = self.callPackage ./slam-toolbox {};
+
+ slide-show = self.callPackage ./slide-show {};
+
  sophus = self.callPackage ./sophus {};
 
  spatio-temporal-voxel-layer = self.callPackage ./spatio-temporal-voxel-layer {};
@@ -848,6 +906,32 @@ self: super: {
 
  stereo-msgs = self.callPackage ./stereo-msgs {};
 
+ swri-console = self.callPackage ./swri-console {};
+
+ swri-console-util = self.callPackage ./swri-console-util {};
+
+ swri-dbw-interface = self.callPackage ./swri-dbw-interface {};
+
+ swri-geometry-util = self.callPackage ./swri-geometry-util {};
+
+ swri-image-util = self.callPackage ./swri-image-util {};
+
+ swri-math-util = self.callPackage ./swri-math-util {};
+
+ swri-opencv-util = self.callPackage ./swri-opencv-util {};
+
+ swri-prefix-tools = self.callPackage ./swri-prefix-tools {};
+
+ swri-roscpp = self.callPackage ./swri-roscpp {};
+
+ swri-route-util = self.callPackage ./swri-route-util {};
+
+ swri-serial-util = self.callPackage ./swri-serial-util {};
+
+ swri-system-util = self.callPackage ./swri-system-util {};
+
+ swri-transform-util = self.callPackage ./swri-transform-util {};
+
  system-modes = self.callPackage ./system-modes {};
 
  system-modes-examples = self.callPackage ./system-modes-examples {};
@@ -859,6 +943,8 @@ self: super: {
  teleop-twist-joy = self.callPackage ./teleop-twist-joy {};
 
  teleop-twist-keyboard = self.callPackage ./teleop-twist-keyboard {};
+
+ test-apex-test-tools = self.callPackage ./test-apex-test-tools {};
 
  test-interface-files = self.callPackage ./test-interface-files {};
 
@@ -918,7 +1004,19 @@ self: super: {
 
  urdfdom-headers = self.callPackage ./urdfdom-headers {};
 
+ urdfdom-py = self.callPackage ./urdfdom-py {};
+
+ urg-c = self.callPackage ./urg-c {};
+
+ urg-node = self.callPackage ./urg-node {};
+
+ urg-node-msgs = self.callPackage ./urg-node-msgs {};
+
  v4l2-camera = self.callPackage ./v4l2-camera {};
+
+ velocity-smoother = self.callPackage ./velocity-smoother {};
+
+ vision-msgs = self.callPackage ./vision-msgs {};
 
  vision-opencv = self.callPackage ./vision-opencv {};
 

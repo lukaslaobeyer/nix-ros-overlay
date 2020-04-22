@@ -5,12 +5,12 @@
 { lib, buildRosPackage, fetchurl, catkin, cpp-common, message-generation, message-runtime, pkg-config, rosconsole, roscpp-serialization, roscpp-traits, rosgraph-msgs, roslang, rostime, std-msgs, xmlrpcpp }:
 buildRosPackage {
   pname = "ros-melodic-roscpp";
-  version = "1.14.3";
+  version = "1.14.5-r1";
 
   src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/roscpp/1.14.3-0.tar.gz";
-    name = "1.14.3-0.tar.gz";
-    sha256 = "aafa1e50ff61f428b3cdf7158129b8b09b4bd7aae6aee553f6a5c8251eae1806";
+    url = "https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/roscpp/1.14.5-1.tar.gz";
+    name = "1.14.5-1.tar.gz";
+    sha256 = "cfd1297d7d46a60b5ff0620808294b408e44441499237ad80388d2dce0976004";
   };
 
   buildType = "catkin";
@@ -20,7 +20,7 @@ buildRosPackage {
 
   meta = {
     description = ''roscpp is a C++ implementation of ROS. It provides
-    a <a href="http://www.ros.org/wiki/Client%20Libraries">client
+    a <a href="http://wiki.ros.org/Client%20Libraries">client
     library</a> that enables C++ programmers to quickly interface with
     ROS <a href="http://ros.org/wiki/Topics">Topics</a>,
     <a href="http://ros.org/wiki/Services">Services</a>,

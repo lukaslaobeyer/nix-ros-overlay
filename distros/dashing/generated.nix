@@ -116,9 +116,15 @@ self: super: {
 
  ament-uncrustify = self.callPackage ./ament-uncrustify {};
 
+ ament-virtualenv = self.callPackage ./ament-virtualenv {};
+
  ament-xmllint = self.callPackage ./ament-xmllint {};
 
  angles = self.callPackage ./angles {};
+
+ apex-containers = self.callPackage ./apex-containers {};
+
+ apex-test-tools = self.callPackage ./apex-test-tools {};
 
  apriltag = self.callPackage ./apriltag {};
 
@@ -126,25 +132,13 @@ self: super: {
 
  apriltag-ros = self.callPackage ./apriltag-ros {};
 
+ astuff-sensor-msgs = self.callPackage ./astuff-sensor-msgs {};
+
  automotive-autonomy-msgs = self.callPackage ./automotive-autonomy-msgs {};
 
  automotive-navigation-msgs = self.callPackage ./automotive-navigation-msgs {};
 
  automotive-platform-msgs = self.callPackage ./automotive-platform-msgs {};
-
- autoware-auto-algorithm = self.callPackage ./autoware-auto-algorithm {};
-
- autoware-auto-cmake = self.callPackage ./autoware-auto-cmake {};
-
- autoware-auto-create-pkg = self.callPackage ./autoware-auto-create-pkg {};
-
- autoware-auto-examples = self.callPackage ./autoware-auto-examples {};
-
- autoware-auto-geometry = self.callPackage ./autoware-auto-geometry {};
-
- autoware-auto-helper-functions = self.callPackage ./autoware-auto-helper-functions {};
-
- autoware-auto-msgs = self.callPackage ./autoware-auto-msgs {};
 
  aws-common = self.callPackage ./aws-common {};
 
@@ -193,6 +187,16 @@ self: super: {
  console-bridge-vendor = self.callPackage ./console-bridge-vendor {};
 
  control-msgs = self.callPackage ./control-msgs {};
+
+ controller-interface = self.callPackage ./controller-interface {};
+
+ controller-manager = self.callPackage ./controller-manager {};
+
+ controller-parameter-server = self.callPackage ./controller-parameter-server {};
+
+ costmap-converter = self.callPackage ./costmap-converter {};
+
+ costmap-converter-msgs = self.callPackage ./costmap-converter-msgs {};
 
  costmap-queue = self.callPackage ./costmap-queue {};
 
@@ -330,10 +334,6 @@ self: super: {
 
  eigen-stl-containers = self.callPackage ./eigen-stl-containers {};
 
- euclidean-cluster = self.callPackage ./euclidean-cluster {};
-
- euclidean-cluster-nodes = self.callPackage ./euclidean-cluster-nodes {};
-
  example-interfaces = self.callPackage ./example-interfaces {};
 
  examples-rclcpp-minimal-action-client = self.callPackage ./examples-rclcpp-minimal-action-client {};
@@ -416,11 +416,11 @@ self: super: {
 
  h264-video-encoder = self.callPackage ./h264-video-encoder {};
 
+ hardware-interface = self.callPackage ./hardware-interface {};
+
  health-metric-collector = self.callPackage ./health-metric-collector {};
 
  hls-lfcd-lds-driver = self.callPackage ./hls-lfcd-lds-driver {};
-
- hungarian-assigner = self.callPackage ./hungarian-assigner {};
 
  ibeo-msgs = self.callPackage ./ibeo-msgs {};
 
@@ -434,11 +434,13 @@ self: super: {
 
  intra-process-demo = self.callPackage ./intra-process-demo {};
 
+ joint-state-publisher = self.callPackage ./joint-state-publisher {};
+
+ joint-state-publisher-gui = self.callPackage ./joint-state-publisher-gui {};
+
  joy = self.callPackage ./joy {};
 
  joy-teleop = self.callPackage ./joy-teleop {};
-
- kalman-filter = self.callPackage ./kalman-filter {};
 
  kartech-linear-actuator-msgs = self.callPackage ./kartech-linear-actuator-msgs {};
 
@@ -453,6 +455,8 @@ self: super: {
  kinesis-video-streamer = self.callPackage ./kinesis-video-streamer {};
 
  laser-geometry = self.callPackage ./laser-geometry {};
+
+ laser-proc = self.callPackage ./laser-proc {};
 
  launch = self.callPackage ./launch {};
 
@@ -480,15 +484,9 @@ self: super: {
 
  libyaml-vendor = self.callPackage ./libyaml-vendor {};
 
- lidar-utils = self.callPackage ./lidar-utils {};
-
  lifecycle = self.callPackage ./lifecycle {};
 
  lifecycle-msgs = self.callPackage ./lifecycle-msgs {};
-
- localization-common = self.callPackage ./localization-common {};
-
- localization-nodes = self.callPackage ./localization-nodes {};
 
  logging-demo = self.callPackage ./logging-demo {};
 
@@ -513,8 +511,6 @@ self: super: {
  ml-classifiers = self.callPackage ./ml-classifiers {};
 
  mobileye-560-660-msgs = self.callPackage ./mobileye-560-660-msgs {};
-
- motion-model = self.callPackage ./motion-model {};
 
  mouse-teleop = self.callPackage ./mouse-teleop {};
 
@@ -564,8 +560,6 @@ self: super: {
 
  navigation2 = self.callPackage ./navigation2 {};
 
- ndt = self.callPackage ./ndt {};
-
  neobotix-usboard-msgs = self.callPackage ./neobotix-usboard-msgs {};
 
  nmea-msgs = self.callPackage ./nmea-msgs {};
@@ -590,8 +584,6 @@ self: super: {
 
  opensplice-cmake-module = self.callPackage ./opensplice-cmake-module {};
 
- optimization = self.callPackage ./optimization {};
-
  orocos-kdl = self.callPackage ./orocos-kdl {};
 
  osrf-pycommon = self.callPackage ./osrf-pycommon {};
@@ -599,6 +591,8 @@ self: super: {
  osrf-testing-tools-cpp = self.callPackage ./osrf-testing-tools-cpp {};
 
  ouster-msgs = self.callPackage ./ouster-msgs {};
+
+ pacmod3 = self.callPackage ./pacmod3 {};
 
  pacmod-msgs = self.callPackage ./pacmod-msgs {};
 
@@ -646,8 +640,6 @@ self: super: {
 
  poco-vendor = self.callPackage ./poco-vendor {};
 
- point-cloud-fusion = self.callPackage ./point-cloud-fusion {};
-
  px4-msgs = self.callPackage ./px4-msgs {};
 
  py-trees-ros = self.callPackage ./py-trees-ros {};
@@ -676,9 +668,11 @@ self: super: {
 
  radar-msgs = self.callPackage ./radar-msgs {};
 
- ray-ground-classifier = self.callPackage ./ray-ground-classifier {};
+ rc-dynamics-api = self.callPackage ./rc-dynamics-api {};
 
- ray-ground-classifier-nodes = self.callPackage ./ray-ground-classifier-nodes {};
+ rc-genicam-api = self.callPackage ./rc-genicam-api {};
+
+ rcdiscover = self.callPackage ./rcdiscover {};
 
  rcl = self.callPackage ./rcl {};
 
@@ -736,11 +730,15 @@ self: super: {
 
  rmw-opensplice-cpp = self.callPackage ./rmw-opensplice-cpp {};
 
+ robot-localization = self.callPackage ./robot-localization {};
+
  robot-state-publisher = self.callPackage ./robot-state-publisher {};
 
  ros1-bridge = self.callPackage ./ros1-bridge {};
 
  ros1-rosbag-storage-vendor = self.callPackage ./ros1-rosbag-storage-vendor {};
+
+ ros2-control = self.callPackage ./ros2-control {};
 
  ros2-ouster = self.callPackage ./ros2-ouster {};
 
@@ -782,6 +780,8 @@ self: super: {
 
  ros-base = self.callPackage ./ros-base {};
 
+ ros-controllers = self.callPackage ./ros-controllers {};
+
  ros-core = self.callPackage ./ros-core {};
 
  ros-environment = self.callPackage ./ros-environment {};
@@ -811,6 +811,8 @@ self: super: {
  rosbag2-tests = self.callPackage ./rosbag2-tests {};
 
  rosbag2-transport = self.callPackage ./rosbag2-transport {};
+
+ rosbridge-library = self.callPackage ./rosbridge-library {};
 
  rosbridge-msgs = self.callPackage ./rosbridge-msgs {};
 
@@ -926,8 +928,6 @@ self: super: {
 
  sensor-msgs = self.callPackage ./sensor-msgs {};
 
- serial-driver = self.callPackage ./serial-driver {};
-
  shape-msgs = self.callPackage ./shape-msgs {};
 
  shared-queues-vendor = self.callPackage ./shared-queues-vendor {};
@@ -935,6 +935,8 @@ self: super: {
  sick-scan2 = self.callPackage ./sick-scan2 {};
 
  slam-toolbox = self.callPackage ./slam-toolbox {};
+
+ slide-show = self.callPackage ./slide-show {};
 
  sophus = self.callPackage ./sophus {};
 
@@ -951,6 +953,8 @@ self: super: {
  std-srvs = self.callPackage ./std-srvs {};
 
  stereo-msgs = self.callPackage ./stereo-msgs {};
+
+ swri-console = self.callPackage ./swri-console {};
 
  swri-console-util = self.callPackage ./swri-console-util {};
 
@@ -988,11 +992,15 @@ self: super: {
 
  teleop-twist-keyboard = self.callPackage ./teleop-twist-keyboard {};
 
+ test-apex-test-tools = self.callPackage ./test-apex-test-tools {};
+
  test-interface-files = self.callPackage ./test-interface-files {};
 
  test-msgs = self.callPackage ./test-msgs {};
 
  test-osrf-testing-tools-cpp = self.callPackage ./test-osrf-testing-tools-cpp {};
+
+ test-robot-hardware = self.callPackage ./test-robot-hardware {};
 
  tf2 = self.callPackage ./tf2 {};
 
@@ -1068,19 +1076,19 @@ self: super: {
 
  urdfdom-headers = self.callPackage ./urdfdom-headers {};
 
+ urdfdom-py = self.callPackage ./urdfdom-py {};
+
+ urg-c = self.callPackage ./urg-c {};
+
+ urg-node = self.callPackage ./urg-node {};
+
+ urg-node-msgs = self.callPackage ./urg-node-msgs {};
+
  v4l2-camera = self.callPackage ./v4l2-camera {};
-
- velodyne-driver = self.callPackage ./velodyne-driver {};
-
- velodyne-node = self.callPackage ./velodyne-node {};
 
  vision-opencv = self.callPackage ./vision-opencv {};
 
  visualization-msgs = self.callPackage ./visualization-msgs {};
-
- voxel-grid = self.callPackage ./voxel-grid {};
-
- voxel-grid-nodes = self.callPackage ./voxel-grid-nodes {};
 
  web-video-server = self.callPackage ./web-video-server {};
 

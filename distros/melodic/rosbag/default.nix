@@ -5,17 +5,17 @@
 { lib, buildRosPackage, fetchurl, boost, catkin, cpp-common, genmsg, genpy, pythonPackages, rosbag-storage, rosconsole, roscpp, roscpp-serialization, roslib, rospy, std-srvs, topic-tools, xmlrpcpp }:
 buildRosPackage {
   pname = "ros-melodic-rosbag";
-  version = "1.14.3";
+  version = "1.14.5-r1";
 
   src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosbag/1.14.3-0.tar.gz";
-    name = "1.14.3-0.tar.gz";
-    sha256 = "37736a1ad7ddeaddb4f651b8a4d10da75654bdf3ff6a4623f85f467c9125405d";
+    url = "https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosbag/1.14.5-1.tar.gz";
+    name = "1.14.5-1.tar.gz";
+    sha256 = "642cb2b16b92366f8deaad9ec65d148e29f4ca550194fc2010a49670925610d9";
   };
 
   buildType = "catkin";
   buildInputs = [ cpp-common pythonPackages.pillow roscpp-serialization ];
-  propagatedBuildInputs = [ boost genmsg genpy pythonPackages.pycrypto pythonPackages.python-gnupg pythonPackages.rospkg rosbag-storage rosconsole roscpp roslib rospy std-srvs topic-tools xmlrpcpp ];
+  propagatedBuildInputs = [ boost genmsg genpy pythonPackages.pycryptodomex pythonPackages.python-gnupg pythonPackages.rospkg rosbag-storage rosconsole roscpp roslib rospy std-srvs topic-tools xmlrpcpp ];
   nativeBuildInputs = [ catkin ];
 
   meta = {

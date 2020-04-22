@@ -5,12 +5,12 @@
 { lib, buildRosPackage, fetchurl, catkin, rosflight, rosflight-firmware, rosflight-msgs, rosflight-sim, rosflight-utils }:
 buildRosPackage {
   pname = "ros-kinetic-rosflight-pkgs";
-  version = "1.0.0-r1";
+  version = "1.3.1-r1";
 
   src = fetchurl {
-    url = "https://github.com/rosflight/rosflight-release/archive/release/kinetic/rosflight_pkgs/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "0a4cdd23fb6decf7281ca2e6ebc78e3c51ef699f9fbdbe7e079a581df2f714ca";
+    url = "https://github.com/rosflight/rosflight-release/archive/release/kinetic/rosflight_pkgs/1.3.1-1.tar.gz";
+    name = "1.3.1-1.tar.gz";
+    sha256 = "bd151bf889152aa3d1014ca0cd47b9d105738f3a2d9e47c14fc522e27b9994c2";
   };
 
   buildType = "catkin";

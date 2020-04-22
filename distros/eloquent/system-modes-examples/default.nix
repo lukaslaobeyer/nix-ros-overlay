@@ -2,21 +2,21 @@
 # Copyright 2020 Open Source Robotics Foundation
 # Distributed under the terms of the BSD license
 
-{ lib, buildRosPackage, fetchurl, ament-cmake, boost, rclcpp, rclcpp-lifecycle, system-modes }:
+{ lib, buildRosPackage, fetchurl, ament-cmake, ament-cmake-ros, boost, rclcpp, rclcpp-lifecycle, system-modes }:
 buildRosPackage {
   pname = "ros-eloquent-system-modes-examples";
-  version = "0.1.5-r1";
+  version = "0.2.0-r3";
 
   src = fetchurl {
-    url = "https://github.com/microROS/system_modes-release/archive/release/eloquent/system_modes_examples/0.1.5-1.tar.gz";
-    name = "0.1.5-1.tar.gz";
-    sha256 = "a5b8ba166e181e91f6c9a6dc869e13c847449864960baa872998ceb5ab78aa78";
+    url = "https://github.com/microROS/system_modes-release/archive/release/eloquent/system_modes_examples/0.2.0-3.tar.gz";
+    name = "0.2.0-3.tar.gz";
+    sha256 = "1dbb35fd6f71838d2bd9b5d9946cfcc635c4ff25ad850db157dd355301b96cd7";
   };
 
   buildType = "ament_cmake";
   checkInputs = [ ament-cmake ];
   propagatedBuildInputs = [ boost rclcpp rclcpp-lifecycle system-modes ];
-  nativeBuildInputs = [ ament-cmake ];
+  nativeBuildInputs = [ ament-cmake-ros ];
 
   meta = {
     description = ''Simple example system for system_modes package.'';

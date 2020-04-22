@@ -5,12 +5,12 @@
 { lib, buildRosPackage, fetchurl, catkin, cmake-modules, eigen, eigen-conversions, geometry-msgs, map-organizer-msgs, map-server, nav-msgs, neonavigation-common, pcl, pcl-conversions, roscpp, roslint, rostest, sensor-msgs, tf2, tf2-geometry-msgs, tf2-ros }:
 buildRosPackage {
   pname = "ros-kinetic-map-organizer";
-  version = "0.5.1-r1";
+  version = "0.8.2-r1";
 
   src = fetchurl {
-    url = "https://github.com/at-wat/neonavigation-release/archive/release/kinetic/map_organizer/0.5.1-1.tar.gz";
-    name = "0.5.1-1.tar.gz";
-    sha256 = "e278c0d5e1e2d5324c9d0e58dbb0f4e81946c20ca9261cea2b796f6704ea4dad";
+    url = "https://github.com/at-wat/neonavigation-release/archive/release/kinetic/map_organizer/0.8.2-1.tar.gz";
+    name = "0.8.2-1.tar.gz";
+    sha256 = "12ef0fd5d914a4cdc42408f0b06689510488bd3a358e01850f306198f5de45ca";
   };
 
   buildType = "catkin";

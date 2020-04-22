@@ -5,12 +5,12 @@
 { lib, buildRosPackage, fetchurl, ament-cmake, ament-cmake-gtest, cv-bridge, eigen, geos, pkg-config, rclcpp, tf2 }:
 buildRosPackage {
   pname = "ros-dashing-swri-geometry-util";
-  version = "3.0.3-r1";
+  version = "3.1.0-r1";
 
   src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/marti_common-release/archive/release/dashing/swri_geometry_util/3.0.3-1.tar.gz";
-    name = "3.0.3-1.tar.gz";
-    sha256 = "0e008664d25ad8accb990b47e636e58e36685ea4dec18baa615b1f40223949c2";
+    url = "https://github.com/swri-robotics-gbp/marti_common-release/archive/release/dashing/swri_geometry_util/3.1.0-1.tar.gz";
+    name = "3.1.0-1.tar.gz";
+    sha256 = "a1fc89c8e5ef6fd1a41d05540245e5deff6f2ad32d257438bc0b54c0a7d33e20";
   };
 
   buildType = "ament_cmake";

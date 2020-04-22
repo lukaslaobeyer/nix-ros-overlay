@@ -1074,9 +1074,9 @@ class PackageSet {
     buildPackage(attr) {
         return __awaiter(this, void 0, void 0, function* () {
             core.debug(`Instantiating ${attr}`);
-            let drvPath;
+            let drvPaths;
             try {
-                drvPath = yield nix.instantiate(this.nixFile, attr, this.drvDir);
+                drvPaths = yield nix.instantiate(this.nixFile, attr, this.drvDir);
             }
             catch (e) {
                 core.debug(`${attr} failed to evaluate`);
@@ -1085,7 +1085,13 @@ class PackageSet {
                     attr, message: e
                 };
             }
-            drvPath = yield fs.promises.realpath(drvPath);
+            if (drvPaths.length != 1) {
+                return {
+                    status: 2 /* EVALUATION_FAILURE */,
+                    attr, message: `Attribute evaluated to ${drvPaths.length} derivations`
+                };
+            }
+            let drvPath = yield fs.promises.realpath(drvPaths[0]);
             const requisites = yield nix.getRequisites(drvPath);
             const failedRequisiteAttrs = requisites
                 .map(d => this.failedPackages.get(d))
@@ -1313,11 +1319,11 @@ exports.printLog = printLog;
 function instantiate(file, attribute, drvDir) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const { stdout: drvPath } = yield execFile('nix-instantiate', [
+            const { stdout: drvPaths } = yield execFile('nix-instantiate', [
                 file, '-A', attribute,
                 '--add-root', path.join(drvDir, attribute), '--indirect'
             ]);
-            return drvPath.trim();
+            return parseLines(drvPaths);
         }
         catch (e) {
             throw e.stderr;
@@ -1368,17 +1374,24 @@ module.exports = require("stream");
 
 "use strict";
 
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const os = __webpack_require__(87);
+const os = __importStar(__webpack_require__(87));
 /**
  * Commands
  *
  * Command Format:
- *   ##[name key=value;key=value]message
+ *   ::name key=value,key=value::message
  *
  * Examples:
- *   ##[warning]This is the user warning message
- *   ##[set-secret name=mypassword]definitelyNotAPassword!
+ *   ::warning::This is the message
+ *   ::set-env name=MY_VAR::some value
  */
 function issueCommand(command, properties, message) {
     const cmd = new Command(command, properties, message);
@@ -1403,34 +1416,39 @@ class Command {
         let cmdStr = CMD_STRING + this.command;
         if (this.properties && Object.keys(this.properties).length > 0) {
             cmdStr += ' ';
+            let first = true;
             for (const key in this.properties) {
                 if (this.properties.hasOwnProperty(key)) {
                     const val = this.properties[key];
                     if (val) {
-                        // safely append the val - avoid blowing up when attempting to
-                        // call .replace() if message is not a string for some reason
-                        cmdStr += `${key}=${escape(`${val || ''}`)},`;
+                        if (first) {
+                            first = false;
+                        }
+                        else {
+                            cmdStr += ',';
+                        }
+                        cmdStr += `${key}=${escapeProperty(val)}`;
                     }
                 }
             }
         }
-        cmdStr += CMD_STRING;
-        // safely append the message - avoid blowing up when attempting to
-        // call .replace() if message is not a string for some reason
-        const message = `${this.message || ''}`;
-        cmdStr += escapeData(message);
+        cmdStr += `${CMD_STRING}${escapeData(this.message)}`;
         return cmdStr;
     }
 }
 function escapeData(s) {
-    return s.replace(/\r/g, '%0D').replace(/\n/g, '%0A');
+    return (s || '')
+        .replace(/%/g, '%25')
+        .replace(/\r/g, '%0D')
+        .replace(/\n/g, '%0A');
 }
-function escape(s) {
-    return s
+function escapeProperty(s) {
+    return (s || '')
+        .replace(/%/g, '%25')
         .replace(/\r/g, '%0D')
         .replace(/\n/g, '%0A')
-        .replace(/]/g, '%5D')
-        .replace(/;/g, '%3B');
+        .replace(/:/g, '%3A')
+        .replace(/,/g, '%2C');
 }
 //# sourceMappingURL=command.js.map
 
@@ -3100,10 +3118,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const command_1 = __webpack_require__(431);
-const os = __webpack_require__(87);
-const path = __webpack_require__(622);
+const os = __importStar(__webpack_require__(87));
+const path = __importStar(__webpack_require__(622));
 /**
  * The code to exit an action
  */
@@ -3189,6 +3214,13 @@ exports.setFailed = setFailed;
 //-----------------------------------------------------------------------
 // Logging Commands
 //-----------------------------------------------------------------------
+/**
+ * Gets whether Actions Step Debug is on or not
+ */
+function isDebug() {
+    return process.env['RUNNER_DEBUG'] === '1';
+}
+exports.isDebug = isDebug;
 /**
  * Writes debug message to user log
  * @param message debug message
@@ -3336,6 +3368,11 @@ const pLimit = concurrency => {
 		},
 		pendingCount: {
 			get: () => queue.length
+		},
+		clearQueue: {
+			value: () => {
+				queue.length = 0;
+			}
 		}
 	});
 

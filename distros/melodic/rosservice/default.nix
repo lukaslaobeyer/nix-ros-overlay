@@ -5,12 +5,12 @@
 { lib, buildRosPackage, fetchurl, catkin, genpy, rosgraph, roslib, rosmsg, rospy }:
 buildRosPackage {
   pname = "ros-melodic-rosservice";
-  version = "1.14.3";
+  version = "1.14.5-r1";
 
   src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosservice/1.14.3-0.tar.gz";
-    name = "1.14.3-0.tar.gz";
-    sha256 = "3c702a38cbf823bf15ade07745f11dd6b19af38b936630dbadb3473aea130e36";
+    url = "https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosservice/1.14.5-1.tar.gz";
+    name = "1.14.5-1.tar.gz";
+    sha256 = "bab389b8331b0f16d55658660750f53f1d9657b0b76384e5ee5531fc086fc64b";
   };
 
   buildType = "catkin";
@@ -19,7 +19,7 @@ buildRosPackage {
 
   meta = {
     description = ''rosservice contains the rosservice command-line tool for listing
-    and querying ROS <a href="http://www.ros.org/wiki/Services">Services</a>. It also
+    and querying ROS <a href="http://wiki.ros.org/Services">Services</a>. It also
     contains a Python library for retrieving information about
     Services and dynamically invoking them. The Python library is
     experimental and is for internal-use only.'';

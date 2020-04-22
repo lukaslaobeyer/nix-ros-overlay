@@ -2,20 +2,20 @@
 # Copyright 2020 Open Source Robotics Foundation
 # Distributed under the terms of the BSD license
 
-{ lib, buildRosPackage, fetchurl, catkin, cmake-modules, pythonPackages, rosbag, rosbuild, rosgraph, roslaunch, roslib, rosnode, rosservice, rostest, std-srvs }:
+{ lib, buildRosPackage, fetchurl, catkin, cmake-modules, pythonPackages, rosbag, rosbuild, rosgraph, roslang, roslaunch, roslib, rosnode, rosservice, rostest, std-srvs }:
 buildRosPackage {
   pname = "ros-melodic-roswtf";
-  version = "1.14.3";
+  version = "1.14.5-r1";
 
   src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/roswtf/1.14.3-0.tar.gz";
-    name = "1.14.3-0.tar.gz";
-    sha256 = "4b80685e087fb64bb3c54d156c2a5b7953092dd83c14906d311def246ebfdd93";
+    url = "https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/roswtf/1.14.5-1.tar.gz";
+    name = "1.14.5-1.tar.gz";
+    sha256 = "4e84d669372890c3dad667d66eae1ceb594c0e02f1d21e7d2a0fabb4b4e8e2f5";
   };
 
   buildType = "catkin";
   buildInputs = [ rostest ];
-  checkInputs = [ cmake-modules rosbag std-srvs ];
+  checkInputs = [ cmake-modules rosbag roslang std-srvs ];
   propagatedBuildInputs = [ pythonPackages.paramiko pythonPackages.rospkg rosbuild rosgraph roslaunch roslib rosnode rosservice ];
   nativeBuildInputs = [ catkin ];
 

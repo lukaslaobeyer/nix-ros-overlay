@@ -2,20 +2,20 @@
 # Copyright 2020 Open Source Robotics Foundation
 # Distributed under the terms of the BSD license
 
-{ lib, buildRosPackage, fetchurl, catkin, eigen, qt5, roscpp, rviz, tf2-ros }:
+{ lib, buildRosPackage, fetchurl, catkin, eigen, qt5, roscpp, rviz, tf2-geometry-msgs, tf2-ros }:
 buildRosPackage {
   pname = "ros-melodic-agni-tf-tools";
-  version = "0.1.2-r1";
+  version = "0.1.5-r1";
 
   src = fetchurl {
-    url = "https://github.com/ubi-agni-gbp/agni_tf_tools-release/archive/release/melodic/agni_tf_tools/0.1.2-1.tar.gz";
-    name = "0.1.2-1.tar.gz";
-    sha256 = "c36d7644b274ae9305e3ad1193039d05bd567c3e92a52794d3df735c2302cbaa";
+    url = "https://github.com/ubi-agni-gbp/agni_tf_tools-release/archive/release/melodic/agni_tf_tools/0.1.5-1.tar.gz";
+    name = "0.1.5-1.tar.gz";
+    sha256 = "b8554c23840cee7a347399a14df9005003996594067f70319732c5491e1ad154";
   };
 
   buildType = "catkin";
   buildInputs = [ eigen qt5.qtbase ];
-  propagatedBuildInputs = [ roscpp rviz tf2-ros ];
+  propagatedBuildInputs = [ roscpp rviz tf2-geometry-msgs tf2-ros ];
   nativeBuildInputs = [ catkin ];
 
   meta = {

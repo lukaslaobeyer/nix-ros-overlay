@@ -5,12 +5,12 @@
 { lib, buildRosPackage, fetchurl, catkin, message-generation, message-runtime, roscpp, std-msgs, visualization-msgs }:
 buildRosPackage {
   pname = "ros-melodic-underwater-sensor-msgs";
-  version = "1.4.2-r1";
+  version = "1.4.2-r3";
 
   src = fetchurl {
-    url = "https://github.com/uji-ros-pkg/underwater_simulation-release/archive/release/melodic/underwater_sensor_msgs/1.4.2-1.tar.gz";
-    name = "1.4.2-1.tar.gz";
-    sha256 = "6f513f997476171784008d90480f099e9e8cdca04601f4f4cac841de53d56709";
+    url = "https://github.com/uji-ros-pkg/underwater_simulation-release/archive/release/melodic/underwater_sensor_msgs/1.4.2-3.tar.gz";
+    name = "1.4.2-3.tar.gz";
+    sha256 = "744d8c7ecf3b8262a69c7366f3263a6e2cb74b1277407de7a804862e4b34d033";
   };
 
   buildType = "catkin";

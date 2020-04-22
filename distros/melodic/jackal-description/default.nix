@@ -5,12 +5,12 @@
 { lib, buildRosPackage, fetchurl, catkin, lms1xx, robot-state-publisher, roslaunch, urdf, xacro }:
 buildRosPackage {
   pname = "ros-melodic-jackal-description";
-  version = "0.6.3-r1";
+  version = "0.6.4-r3";
 
   src = fetchurl {
-    url = "https://github.com/clearpath-gbp/jackal-release/archive/release/melodic/jackal_description/0.6.3-1.tar.gz";
-    name = "0.6.3-1.tar.gz";
-    sha256 = "12dae750592cd3ae4ca0ddff02f0c1556c7cd7174be6955555ebc34e5162b9fc";
+    url = "https://github.com/clearpath-gbp/jackal-release/archive/release/melodic/jackal_description/0.6.4-3.tar.gz";
+    name = "0.6.4-3.tar.gz";
+    sha256 = "292362838901a248f37d703c3ac77429ee40ad8ce765db21f35188d61232c9d7";
   };
 
   buildType = "catkin";

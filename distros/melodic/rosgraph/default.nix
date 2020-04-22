@@ -5,12 +5,12 @@
 { lib, buildRosPackage, fetchurl, catkin, pythonPackages }:
 buildRosPackage {
   pname = "ros-melodic-rosgraph";
-  version = "1.14.3";
+  version = "1.14.5-r1";
 
   src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosgraph/1.14.3-0.tar.gz";
-    name = "1.14.3-0.tar.gz";
-    sha256 = "e17c523458f3ae9cd5f463da95034fa8cea78a17fffdf0f1d2921047b812205d";
+    url = "https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosgraph/1.14.5-1.tar.gz";
+    name = "1.14.5-1.tar.gz";
+    sha256 = "13f5d55c64d54e8684ac8a82b4b7c8df84520dde89b145afe785639b6e867fd6";
   };
 
   buildType = "catkin";

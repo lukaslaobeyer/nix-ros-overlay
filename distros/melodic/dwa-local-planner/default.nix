@@ -5,12 +5,12 @@
 { lib, buildRosPackage, fetchurl, angles, base-local-planner, catkin, cmake-modules, costmap-2d, dynamic-reconfigure, eigen, nav-core, nav-msgs, pluginlib, roscpp, sensor-msgs, tf2, tf2-geometry-msgs, tf2-ros }:
 buildRosPackage {
   pname = "ros-melodic-dwa-local-planner";
-  version = "1.16.3-r1";
+  version = "1.16.6-r1";
 
   src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation-release/archive/release/melodic/dwa_local_planner/1.16.3-1.tar.gz";
-    name = "1.16.3-1.tar.gz";
-    sha256 = "e7b355667efe48acd5fa41e92ec620cda6e5f0e7fb384ccf7f3153daa0625fd7";
+    url = "https://github.com/ros-gbp/navigation-release/archive/release/melodic/dwa_local_planner/1.16.6-1.tar.gz";
+    name = "1.16.6-1.tar.gz";
+    sha256 = "5e0ee2dc5169c993bf0683dc5e7dc32bd06725097e26480d636d3102e3f54fec";
   };
 
   buildType = "catkin";

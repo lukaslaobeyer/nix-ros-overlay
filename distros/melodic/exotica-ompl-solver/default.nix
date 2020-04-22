@@ -5,12 +5,12 @@
 { lib, buildRosPackage, fetchurl, catkin, exotica-core, exotica-python, ompl }:
 buildRosPackage {
   pname = "ros-melodic-exotica-ompl-solver";
-  version = "5.0.0";
+  version = "5.1.3-r3";
 
   src = fetchurl {
-    url = "https://github.com/ipab-slmc/exotica-release/archive/release/melodic/exotica_ompl_solver/5.0.0-0.tar.gz";
-    name = "5.0.0-0.tar.gz";
-    sha256 = "07851ceb7d6c1cae605a7ba07157219995fcb3e1358f65c62daf96e73012ff26";
+    url = "https://github.com/ipab-slmc/exotica-release/archive/release/melodic/exotica_ompl_solver/5.1.3-3.tar.gz";
+    name = "5.1.3-3.tar.gz";
+    sha256 = "692432ad32c66690874b48d3fbb721c192e87664f38ce20263e17a593703190c";
   };
 
   buildType = "catkin";

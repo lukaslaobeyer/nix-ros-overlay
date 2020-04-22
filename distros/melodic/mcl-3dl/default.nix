@@ -2,20 +2,20 @@
 # Copyright 2020 Open Source Robotics Foundation
 # Distributed under the terms of the BSD license
 
-{ lib, buildRosPackage, fetchurl, catkin, eigen, geometry-msgs, mcl-3dl-msgs, nav-msgs, pcl-ros, roscpp, roslint, rostest, rosunit, sensor-msgs, std-msgs, std-srvs, tf2, tf2-geometry-msgs, tf2-ros, tf2-sensor-msgs, visualization-msgs }:
+{ lib, buildRosPackage, fetchurl, catkin, diagnostic-updater, eigen, geometry-msgs, mcl-3dl-msgs, nav-msgs, pcl-ros, roscpp, roslint, rostest, rosunit, sensor-msgs, std-msgs, std-srvs, tf2, tf2-geometry-msgs, tf2-ros, tf2-sensor-msgs, visualization-msgs }:
 buildRosPackage {
   pname = "ros-melodic-mcl-3dl";
-  version = "0.1.7-r1";
+  version = "0.2.3-r1";
 
   src = fetchurl {
-    url = "https://github.com/at-wat/mcl_3dl-release/archive/release/melodic/mcl_3dl/0.1.7-1.tar.gz";
-    name = "0.1.7-1.tar.gz";
-    sha256 = "e88356d9a2d3a1f2e3767277c860ab148053c3bf0203e61d55b8be136e887329";
+    url = "https://github.com/at-wat/mcl_3dl-release/archive/release/melodic/mcl_3dl/0.2.3-1.tar.gz";
+    name = "0.2.3-1.tar.gz";
+    sha256 = "123f5922ff4d262fd8b3b5b9c78fbba180bce8f0774d019c0c67c0ec12394711";
   };
 
   buildType = "catkin";
   checkInputs = [ roslint rostest rosunit ];
-  propagatedBuildInputs = [ eigen geometry-msgs mcl-3dl-msgs nav-msgs pcl-ros roscpp sensor-msgs std-msgs std-srvs tf2 tf2-geometry-msgs tf2-ros tf2-sensor-msgs visualization-msgs ];
+  propagatedBuildInputs = [ diagnostic-updater eigen geometry-msgs mcl-3dl-msgs nav-msgs pcl-ros roscpp sensor-msgs std-msgs std-srvs tf2 tf2-geometry-msgs tf2-ros tf2-sensor-msgs visualization-msgs ];
   nativeBuildInputs = [ catkin ];
 
   meta = {

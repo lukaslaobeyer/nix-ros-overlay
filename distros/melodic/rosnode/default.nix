@@ -5,12 +5,12 @@
 { lib, buildRosPackage, fetchurl, catkin, rosgraph, rostest, rostopic }:
 buildRosPackage {
   pname = "ros-melodic-rosnode";
-  version = "1.14.3";
+  version = "1.14.5-r1";
 
   src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosnode/1.14.3-0.tar.gz";
-    name = "1.14.3-0.tar.gz";
-    sha256 = "9766e0e61bb3e82cab7763af6c0881d2c7cd95cd8a14bcb0538da50124be4d80";
+    url = "https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosnode/1.14.5-1.tar.gz";
+    name = "1.14.5-1.tar.gz";
+    sha256 = "0ff95b420d2206c246092bf9f776a3cf02e3b91c29bd77d44ea0bf5297e20240";
   };
 
   buildType = "catkin";
@@ -20,7 +20,7 @@ buildRosPackage {
 
   meta = {
     description = ''rosnode is a command-line tool for displaying debug information
-    about ROS <a href="http://www.ros.org/wiki/Nodes">Nodes</a>,
+    about ROS <a href="http://wiki.ros.org/Nodes">Nodes</a>,
     including publications, subscriptions and connections. It also
     contains an experimental library for retrieving node
     information. This library is intended for internal use only.'';

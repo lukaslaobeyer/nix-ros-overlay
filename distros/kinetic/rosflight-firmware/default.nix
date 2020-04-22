@@ -5,12 +5,12 @@
 { lib, buildRosPackage, fetchurl, catkin, roscpp }:
 buildRosPackage {
   pname = "ros-kinetic-rosflight-firmware";
-  version = "1.0.0-r1";
+  version = "1.3.1-r1";
 
   src = fetchurl {
-    url = "https://github.com/rosflight/rosflight-release/archive/release/kinetic/rosflight_firmware/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "f67261299a26a7c6a6b69c245e555ddc8efd3621d422e2f7f23fd29ddee21f54";
+    url = "https://github.com/rosflight/rosflight-release/archive/release/kinetic/rosflight_firmware/1.3.1-1.tar.gz";
+    name = "1.3.1-1.tar.gz";
+    sha256 = "2253298d9c713833c91e59217fdff27af3019aaf5f6f1bf65bff82406a193e32";
   };
 
   buildType = "catkin";

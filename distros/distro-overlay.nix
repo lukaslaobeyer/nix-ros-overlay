@@ -41,7 +41,7 @@ let
       prePhases ? [],
       postPatch ? "", ...
     }: let
-      setupHook = self.callPackage ./catkin-setup-hook { } distro;
+      setupHook = self.callPackage ./catkin-setup-hook { };
     in {
       propagatedBuildInputs = [ self.cmake setupHook ] ++ propagatedBuildInputs;
 
@@ -69,8 +69,14 @@ let
     cob-light = patchBoostSignals rosSuper.cob-light;
 
     cv-bridge = (patchBoostPython rosSuper.cv-bridge).overrideAttrs ({
+      patches ? [],
       propagatedBuildInputs ? [], ...
     }: {
+      patches = patches ++ [ (self.fetchpatch {
+        url = "https://github.com/ros-perception/vision_opencv/commit/fbfb25303bd77db6a5943043cc4303d0c0b835c9.patch";
+        sha256 = "0pznlbqp99f6bzql3q1sjy9sqk2746wgp7qdqj790j5z0vb2v2r6";
+        stripLen = 1;
+      }) ];
       propagatedBuildInputs = propagatedBuildInputs ++ [ rosSelf.pythonPackages.opencv3 ];
     });
 
@@ -85,16 +91,19 @@ let
 
     fake-localization = patchBoostSignals rosSuper.fake-localization;
 
-    fmilibrary-vendor = patchVendorUrl rosSuper.fmilibrary-vendor {
-      url = "https://jmodelica.org/fmil/FMILibrary-2.0.3-src.zip";
-      sha256 = "16lx6355zskrb7wgw2bzdzms36pcjyl2ry03wgsac5215jg1zhjc";
+    fmilibrary-vendor = patchVendorGit rosSuper.fmilibrary-vendor {
+      url = "https://github.com/modelon-community/fmi-library.git";
+      fetchgitArgs = {
+        rev = "2.1";
+        sha256 = "177rlw1ba1y0ahi8qfpg0sflh8mjdl6fmffwjg2a5vxyxwdwrjvh";
+      };
     };
 
     # This build system contains fractal levels of stupidity
     foonathan-memory-vendor = patchVendorGit rosSuper.foonathan-memory-vendor {
       url = "https://github.com/foonathan/memory.git";
-      sha256 = "1n7xxi61wzpixb3kldnl826syb4yml613q4i38d0cciydhy1gwzl";
       fetchgitArgs = {
+        sha256 = "1n7xxi61wzpixb3kldnl826syb4yml613q4i38d0cciydhy1gwzl";
         # Needed by the postFetch, then removed there
         leaveDotGit = true;
         # Prevent the build system from trying to download random files
@@ -119,6 +128,11 @@ let
 
     laser-cb-detector = patchBoostSignals rosSuper.laser-cb-detector;
 
+    libpcan = patchVendorUrl rosSuper.libpcan {
+      url = "http://www.peak-system.com/fileadmin/media/linux/files/peak-linux-driver-8.3.tar.gz";
+      sha256 = "0f6v3vjszyg1xp99jx48hyv8p32iyq4j18a4ir4x5p6f3b0z3r34";
+    };
+
     libphidget21 = patchVendorUrl rosSuper.libphidget21 {
       url = "https://www.phidgets.com/downloads/phidget21/libraries/linux/libphidget/libphidget_2.1.9.20190409.tar.gz";
       sha256 = "07w54dmr75vq2imngfy66nk1sxlvkzhl2p6g362q0a02f099jy0f";
@@ -134,6 +148,23 @@ let
       sha256 = "0lpaskqxpklm05050wwvdqwhw30f2hpzss8sgyvczdpvvqzjg4vk";
     };
 
+    librealsense = rosSuper.librealsense.overrideAttrs ({
+      patches ? [], ...
+    }: {
+      patches = patches ++ [ (self.fetchpatch {
+        url = "https://github.com/IntelRealSense/librealsense/commit/86e434c86096b91a722f22bd039c2b6eeb8174ab.patch";
+        sha256 = "1kcvm32cx9zzd56k9yglnyxizmfgar3a6cybjdwpyf6ljrxjlpp5";
+      }) ];
+    });
+
+    libuvc-camera = rosSuper.libuvc-camera.overrideAttrs ({
+      postPatch ? "", ...
+    }: {
+      postPatch = postPatch + ''
+        substituteInPlace cfg/UVCCamera.cfg --replace python2 python
+      '';
+    });
+
     libyaml-vendor = patchVendorUrl rosSuper.libyaml-vendor {
       url = "https://github.com/yaml/libyaml/archive/10c907871f1ccd779c7fccf6b81a62762b5c4e7b.zip";
       sha256 = "0v6ks4hpxmakgymcfvafynla76gl3866grgwf4vjdsb4rsvr13vx";
@@ -143,6 +174,25 @@ let
       nativeBuildInputs ? [], ...
     }: {
       nativeBuildInputs = nativeBuildInputs ++ [ self.pkgconfig ];
+    });
+
+    mapviz = rosSuper.mapviz.overrideAttrs ({
+      nativeBuildInputs ? [],
+      postFixup ? "", ...
+    }: {
+      nativeBuildInputs = nativeBuildInputs ++ [ self.qt5.wrapQtAppsHook ];
+      postFixup = postFixup + ''
+        wrapQtApp "$out/lib/mapviz/mapviz"
+      '';
+    });
+
+    mavlink = rosSuper.mavlink.overrideAttrs ({
+      postPatch ? "", ...
+    }: {
+      postPatch = postPatch + ''
+        substituteInPlace CMakeLists.txt --replace /usr/bin/env '${self.coreutils}/bin/env'
+        patchShebangs pymavlink/tools/mavgen.py
+      '';
     });
 
     message-filters = patchBoostSignals rosSuper.message-filters;
@@ -186,27 +236,15 @@ let
     });
 
     rqt-gui = rosSuper.rqt-gui.overrideAttrs ({
-      nativeBuildInputs ? [],
-      postFixup ? "", ...
+      nativeBuildInputs ? [], ...
     }: {
-      nativeBuildInputs = nativeBuildInputs ++ [ self.makeWrapper ];
-
-      postFixup = ''
-        wrapProgram $out/bin/rqt \
-          --prefix QT_PLUGIN_PATH : "${self.qt5.qtbase.bin}/${self.qt5.qtbase.qtPluginPrefix}"
-      '' + postFixup;
+      nativeBuildInputs = nativeBuildInputs ++ [ self.qt5.wrapQtAppsHook ];
     });
 
     rviz = rosSuper.rviz.overrideAttrs ({
-      nativeBuildInputs ? [],
-      postFixup ? "", ...
+      nativeBuildInputs ? [], ...
     }: {
-      nativeBuildInputs = nativeBuildInputs ++ [ self.makeWrapper ];
-
-      postFixup = ''
-        wrapProgram $out/bin/rviz \
-          --prefix QT_PLUGIN_PATH : "${self.qt5.qtbase.bin}/${self.qt5.qtbase.qtPluginPrefix}"
-      '' + postFixup;
+      nativeBuildInputs = nativeBuildInputs ++ [ self.qt5.wrapQtAppsHook ];
     });
 
     rviz-ogre-vendor = rosSuper.rviz-ogre-vendor.overrideAttrs ({
@@ -232,9 +270,53 @@ let
       sha256 = "1255n51y1bjry97n4w60mgz6b9h14flfrxb01ihjf6pwvvfns8ag";
     };
 
+    swri-geometry-util = rosSuper.swri-geometry-util.overrideAttrs ({
+      patches ? [], ...
+    }: {
+      patches = patches ++ [ (self.fetchpatch {
+        url = "https://github.com/swri-robotics/marti_common/commit/a8253120b0eb1b3dbba97616dc0c1acce407f5c8.patch";
+        stripLen = 1;
+        sha256 = "0jnn9npqyiqwp6if29nxx0dyalc9bnaaqhymxlwkh2x71gf5armb";
+      }) ];
+    });
+
+    swri-opencv-util = rosSuper.swri-opencv-util.overrideAttrs ({
+      patches ? [], ...
+    }: {
+      patches = patches ++ [ (self.fetchpatch {
+        url = "https://github.com/swri-robotics/marti_common/commit/b8414d4bc39e689a93582b246b0ba6eaf14feac6.patch";
+        stripLen = 1;
+        includes = [ "src/show.cpp" ];
+        sha256 = "0n1akps47rgbij7gbylxhxdndzlmzmax09axqdlygx81db6zh1qc";
+      }) ];
+    });
+
+    swri-transform-util = rosSuper.swri-transform-util.overrideAttrs ({
+      patches ? [],
+      CXXFLAGS ? "", ...
+    }: {
+      patches = patches ++ [ (self.fetchpatch {
+        url = "https://github.com/swri-robotics/marti_common/commit/b8414d4bc39e689a93582b246b0ba6eaf14feac6.patch";
+        stripLen = 1;
+        includes = [ "include/swri_transform_util/utm_util.h" ];
+        sha256 = "1j23rxx6087g844dfkm9vxci29pykka4nmy6660h9nsxarcg327h";
+      }) ];
+      CXXFLAGS = CXXFLAGS + " -DACCEPT_USE_OF_DEPRECATED_PROJ_API_H";
+    });
+
     tf = patchBoostSignals rosSuper.tf;
 
     tf2 = patchBoostSignals rosSuper.tf2;
+
+    tile-map = rosSuper.tile-map.overrideAttrs ({
+      patches ? [], ...
+    }: {
+      patches = patches ++ [ (self.fetchpatch {
+        url = "https://github.com/swri-robotics/mapviz/commit/1600eaab695b4047fbf690e356362b4376cfecfd.patch";
+        stripLen = 1;
+        sha256 = "1g2kw3pz3amzj99a13r398r8cxbpi6ganqlhz2qgd22raw8qnrxx";
+      }) ];
+    });
 
     tinydir-vendor = patchVendorUrl rosSuper.tinydir-vendor {
       url = "https://github.com/cxong/tinydir/archive/1.2.4.tar.gz";

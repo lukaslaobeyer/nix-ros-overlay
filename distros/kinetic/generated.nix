@@ -112,8 +112,6 @@ self: super: {
 
  arduino-daq = self.callPackage ./arduino-daq {};
 
- area-division = self.callPackage ./area-division {};
-
  arm-navigation-msgs = self.callPackage ./arm-navigation-msgs {};
 
  aruco = self.callPackage ./aruco {};
@@ -143,6 +141,8 @@ self: super: {
  async-comm = self.callPackage ./async-comm {};
 
  async-web-server-cpp = self.callPackage ./async-web-server-cpp {};
+
+ ati-force-torque = self.callPackage ./ati-force-torque {};
 
  ati-ft-sensor = self.callPackage ./ati-ft-sensor {};
 
@@ -276,6 +276,8 @@ self: super: {
 
  care-o-bot-simulation = self.callPackage ./care-o-bot-simulation {};
 
+ carla-msgs = self.callPackage ./carla-msgs {};
+
  carrot-planner = self.callPackage ./carrot-planner {};
 
  cartesian-msgs = self.callPackage ./cartesian-msgs {};
@@ -339,8 +341,6 @@ self: super: {
  cmake-modules = self.callPackage ./cmake-modules {};
 
  cmd-vel-smoother = self.callPackage ./cmd-vel-smoother {};
-
- cnn-bridge = self.callPackage ./cnn-bridge {};
 
  cob-3d-mapping-msgs = self.callPackage ./cob-3d-mapping-msgs {};
 
@@ -459,6 +459,8 @@ self: super: {
  cob-map-accessibility-analysis = self.callPackage ./cob-map-accessibility-analysis {};
 
  cob-mapping-slam = self.callPackage ./cob-mapping-slam {};
+
+ cob-mecanum-controller = self.callPackage ./cob-mecanum-controller {};
 
  cob-mimic = self.callPackage ./cob-mimic {};
 
@@ -610,13 +612,9 @@ self: super: {
 
  costmap-queue = self.callPackage ./costmap-queue {};
 
- coverage-path = self.callPackage ./coverage-path {};
-
  cpp-common = self.callPackage ./cpp-common {};
 
  cpr-multimaster-tools = self.callPackage ./cpr-multimaster-tools {};
-
- cpswarm-msgs = self.callPackage ./cpswarm-msgs {};
 
  create-dashboard = self.callPackage ./create-dashboard {};
 
@@ -681,8 +679,6 @@ self: super: {
  dbw-mkz-joystick-demo = self.callPackage ./dbw-mkz-joystick-demo {};
 
  dbw-mkz-msgs = self.callPackage ./dbw-mkz-msgs {};
-
- dbw-mkz-twist-controller = self.callPackage ./dbw-mkz-twist-controller {};
 
  ddwrt-access-point = self.callPackage ./ddwrt-access-point {};
 
@@ -780,10 +776,6 @@ self: super: {
 
  dockeros = self.callPackage ./dockeros {};
 
- doosan-robot = self.callPackage ./doosan-robot {};
-
- doosan-robotics = self.callPackage ./doosan-robotics {};
-
  downward = self.callPackage ./downward {};
 
  dr-base = self.callPackage ./dr-base {};
@@ -796,11 +788,7 @@ self: super: {
 
  drone-wrapper = self.callPackage ./drone-wrapper {};
 
- dsr-control = self.callPackage ./dsr-control {};
-
  dsr-description = self.callPackage ./dsr-description {};
-
- dsr-example-cpp = self.callPackage ./dsr-example-cpp {};
 
  dsr-example-py = self.callPackage ./dsr-example-py {};
 
@@ -855,6 +843,8 @@ self: super: {
  dynamixel-workbench-toolbox = self.callPackage ./dynamixel-workbench-toolbox {};
 
  dynpick-driver = self.callPackage ./dynpick-driver {};
+
+ earth-rover-localization = self.callPackage ./earth-rover-localization {};
 
  earth-rover-piksi = self.callPackage ./earth-rover-piksi {};
 
@@ -996,19 +986,41 @@ self: super: {
 
  exotica-aico-solver = self.callPackage ./exotica-aico-solver {};
 
+ exotica-cartpole-dynamics-solver = self.callPackage ./exotica-cartpole-dynamics-solver {};
+
  exotica-collision-scene-fcl-latest = self.callPackage ./exotica-collision-scene-fcl-latest {};
 
  exotica-core = self.callPackage ./exotica-core {};
 
  exotica-core-task-maps = self.callPackage ./exotica-core-task-maps {};
 
+ exotica-ddp-solver = self.callPackage ./exotica-ddp-solver {};
+
+ exotica-double-integrator-dynamics-solver = self.callPackage ./exotica-double-integrator-dynamics-solver {};
+
+ exotica-dynamics-solvers = self.callPackage ./exotica-dynamics-solvers {};
+
  exotica-examples = self.callPackage ./exotica-examples {};
 
  exotica-ik-solver = self.callPackage ./exotica-ik-solver {};
 
+ exotica-ilqg-solver = self.callPackage ./exotica-ilqg-solver {};
+
+ exotica-ilqr-solver = self.callPackage ./exotica-ilqr-solver {};
+
  exotica-levenberg-marquardt-solver = self.callPackage ./exotica-levenberg-marquardt-solver {};
 
+ exotica-ompl-control-solver = self.callPackage ./exotica-ompl-control-solver {};
+
  exotica-ompl-solver = self.callPackage ./exotica-ompl-solver {};
+
+ exotica-pendulum-dynamics-solver = self.callPackage ./exotica-pendulum-dynamics-solver {};
+
+ exotica-pinocchio-dynamics-solver = self.callPackage ./exotica-pinocchio-dynamics-solver {};
+
+ exotica-quadrotor-dynamics-solver = self.callPackage ./exotica-quadrotor-dynamics-solver {};
+
+ exotica-scipy-solver = self.callPackage ./exotica-scipy-solver {};
 
  exotica-time-indexed-rrt-connect-solver = self.callPackage ./exotica-time-indexed-rrt-connect-solver {};
 
@@ -1342,6 +1354,14 @@ self: super: {
 
  gscam = self.callPackage ./gscam {};
 
+ gundam-robot = self.callPackage ./gundam-robot {};
+
+ gundam-rx78-control = self.callPackage ./gundam-rx78-control {};
+
+ gundam-rx78-description = self.callPackage ./gundam-rx78-description {};
+
+ gundam-rx78-gazebo = self.callPackage ./gundam-rx78-gazebo {};
+
  gx-sound = self.callPackage ./gx-sound {};
 
  gx-sound-msgs = self.callPackage ./gx-sound-msgs {};
@@ -1524,6 +1544,8 @@ self: super: {
 
  ieee80211-channels = self.callPackage ./ieee80211-channels {};
 
+ ifm3d = self.callPackage ./ifm3d {};
+
  ifm-o3mxxx = self.callPackage ./ifm-o3mxxx {};
 
  igvc-self-drive-description = self.callPackage ./igvc-self-drive-description {};
@@ -1704,6 +1726,8 @@ self: super: {
 
  joint-state-publisher = self.callPackage ./joint-state-publisher {};
 
+ joint-state-publisher-gui = self.callPackage ./joint-state-publisher-gui {};
+
  joint-states-settler = self.callPackage ./joint-states-settler {};
 
  joint-trajectory-action = self.callPackage ./joint-trajectory-action {};
@@ -1858,8 +1882,6 @@ self: super: {
 
  khi-rs-ikfast-plugin = self.callPackage ./khi-rs-ikfast-plugin {};
 
- kinematics-exchanger = self.callPackage ./kinematics-exchanger {};
-
  kinesis-manager = self.callPackage ./kinesis-manager {};
 
  kinesis-video-msgs = self.callPackage ./kinesis-video-msgs {};
@@ -1923,6 +1945,14 @@ self: super: {
  ksql-airport = self.callPackage ./ksql-airport {};
 
  kvh = self.callPackage ./kvh {};
+
+ kvh-geo-fog-3d = self.callPackage ./kvh-geo-fog-3d {};
+
+ kvh-geo-fog-3d-driver = self.callPackage ./kvh-geo-fog-3d-driver {};
+
+ kvh-geo-fog-3d-msgs = self.callPackage ./kvh-geo-fog-3d-msgs {};
+
+ kvh-geo-fog-3d-rviz = self.callPackage ./kvh-geo-fog-3d-rviz {};
 
  laptop-battery-monitor = self.callPackage ./laptop-battery-monitor {};
 
@@ -2188,6 +2218,8 @@ self: super: {
 
  mavlink = self.callPackage ./mavlink {};
 
+ mavros = self.callPackage ./mavros {};
+
  mavros-extras = self.callPackage ./mavros-extras {};
 
  mavros-msgs = self.callPackage ./mavros-msgs {};
@@ -2427,16 +2459,6 @@ self: super: {
  msp = self.callPackage ./msp {};
 
  multi-interface-roam = self.callPackage ./multi-interface-roam {};
-
- multi-jackal-base = self.callPackage ./multi-jackal-base {};
-
- multi-jackal-control = self.callPackage ./multi-jackal-control {};
-
- multi-jackal-description = self.callPackage ./multi-jackal-description {};
-
- multi-jackal-nav = self.callPackage ./multi-jackal-nav {};
-
- multi-jackal-tutorials = self.callPackage ./multi-jackal-tutorials {};
 
  multi-map-server = self.callPackage ./multi-map-server {};
 
@@ -2956,9 +2978,13 @@ self: super: {
 
  pilz-robots = self.callPackage ./pilz-robots {};
 
+ pilz-status-indicator-rqt = self.callPackage ./pilz-status-indicator-rqt {};
+
  pilz-testutils = self.callPackage ./pilz-testutils {};
 
  pilz-trajectory-generation = self.callPackage ./pilz-trajectory-generation {};
+
+ pilz-utils = self.callPackage ./pilz-utils {};
 
  pinocchio = self.callPackage ./pinocchio {};
 
@@ -3200,6 +3226,8 @@ self: super: {
 
  pyclearsilver = self.callPackage ./pyclearsilver {};
 
+ pyquaternion = self.callPackage ./pyquaternion {};
+
  pyros = self.callPackage ./pyros {};
 
  pyros-common = self.callPackage ./pyros-common {};
@@ -3406,6 +3434,8 @@ self: super: {
 
  recordit = self.callPackage ./recordit {};
 
+ remote-rosbag-record = self.callPackage ./remote-rosbag-record {};
+
  resized-image-transport = self.callPackage ./resized-image-transport {};
 
  resource-retriever = self.callPackage ./resource-retriever {};
@@ -3469,6 +3499,8 @@ self: super: {
  robot-controllers-interface = self.callPackage ./robot-controllers-interface {};
 
  robot-controllers-msgs = self.callPackage ./robot-controllers-msgs {};
+
+ robot-indicator = self.callPackage ./robot-indicator {};
 
  robot-localization = self.callPackage ./robot-localization {};
 
@@ -3672,6 +3704,8 @@ self: super: {
 
  ros-core = self.callPackage ./ros-core {};
 
+ ros-cvb-camera-driver = self.callPackage ./ros-cvb-camera-driver {};
+
  ros-emacs-utils = self.callPackage ./ros-emacs-utils {};
 
  ros-environment = self.callPackage ./ros-environment {};
@@ -3727,6 +3761,8 @@ self: super: {
  rosbash-params = self.callPackage ./rosbash-params {};
 
  rosboost-cfg = self.callPackage ./rosboost-cfg {};
+
+ rosbridge-library = self.callPackage ./rosbridge-library {};
 
  rosbridge-msgs = self.callPackage ./rosbridge-msgs {};
 
@@ -4014,11 +4050,15 @@ self: super: {
 
  rr-openrover-basic = self.callPackage ./rr-openrover-basic {};
 
+ rr-openrover-description = self.callPackage ./rr-openrover-description {};
+
  rr-openrover-driver = self.callPackage ./rr-openrover-driver {};
 
  rr-openrover-driver-msgs = self.callPackage ./rr-openrover-driver-msgs {};
 
  rr-openrover-stack = self.callPackage ./rr-openrover-stack {};
+
+ rr-rover-zero-driver = self.callPackage ./rr-rover-zero-driver {};
 
  rr-swiftnav-piksi = self.callPackage ./rr-swiftnav-piksi {};
 
@@ -4073,8 +4113,6 @@ self: super: {
  rtt-nav-msgs = self.callPackage ./rtt-nav-msgs {};
 
  rtt-pcl = self.callPackage ./rtt-pcl {};
-
- rtt-pcl-ros = self.callPackage ./rtt-pcl-ros {};
 
  rtt-ros = self.callPackage ./rtt-ros {};
 
@@ -4159,6 +4197,8 @@ self: super: {
  scan-to-cloud-converter = self.callPackage ./scan-to-cloud-converter {};
 
  scan-tools = self.callPackage ./scan-tools {};
+
+ scenario-test-tools = self.callPackage ./scenario-test-tools {};
 
  scheduler-msgs = self.callPackage ./scheduler-msgs {};
 
@@ -4304,8 +4344,6 @@ self: super: {
 
  stage-ros = self.callPackage ./stage-ros {};
 
- state-exchanger = self.callPackage ./state-exchanger {};
-
  static-tf = self.callPackage ./static-tf {};
 
  static-transform-mux = self.callPackage ./static-transform-mux {};
@@ -4374,16 +4412,6 @@ self: super: {
 
  summit-xl-sim-bringup = self.callPackage ./summit-xl-sim-bringup {};
 
- swarm-behaviors = self.callPackage ./swarm-behaviors {};
-
- swarm-behaviors-position = self.callPackage ./swarm-behaviors-position {};
-
- swarm-behaviors-velocity = self.callPackage ./swarm-behaviors-velocity {};
-
- swarm-functions = self.callPackage ./swarm-functions {};
-
- swarmros = self.callPackage ./swarmros {};
-
  swri-console = self.callPackage ./swri-console {};
 
  swri-console-util = self.callPackage ./swri-console-util {};
@@ -4433,10 +4461,6 @@ self: super: {
  talos-description-inertial = self.callPackage ./talos-description-inertial {};
 
  tango-ros-messages = self.callPackage ./tango-ros-messages {};
-
- target-monitor = self.callPackage ./target-monitor {};
-
- task-allocation = self.callPackage ./task-allocation {};
 
  task-compiler = self.callPackage ./task-compiler {};
 
@@ -4770,21 +4794,11 @@ self: super: {
 
  twistimu = self.callPackage ./twistimu {};
 
- uav-local-coverage = self.callPackage ./uav-local-coverage {};
-
- uav-optimal-coverage = self.callPackage ./uav-optimal-coverage {};
-
- uav-random-direction = self.callPackage ./uav-random-direction {};
-
- uav-simple-tracking = self.callPackage ./uav-simple-tracking {};
-
  ubiquity-motor = self.callPackage ./ubiquity-motor {};
 
  ueye = self.callPackage ./ueye {};
 
  ueye-cam = self.callPackage ./ueye-cam {};
-
- ugv-random-walk = self.callPackage ./ugv-random-walk {};
 
  um6 = self.callPackage ./um6 {};
 
@@ -4871,6 +4885,8 @@ self: super: {
  uuv-control-msgs = self.callPackage ./uuv-control-msgs {};
 
  uuv-control-utils = self.callPackage ./uuv-control-utils {};
+
+ uuv-cpc-sensor = self.callPackage ./uuv-cpc-sensor {};
 
  uuv-descriptions = self.callPackage ./uuv-descriptions {};
 

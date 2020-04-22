@@ -5,12 +5,12 @@
 { lib, buildRosPackage, fetchurl, camera-info-manager, catkin, curl, diagnostic-updater, dpkg, dynamic-reconfigure, image-exposure-msgs, image-proc, image-transport, libraw1394, libusb1, nodelet, roscpp, roslaunch, roslint, sensor-msgs, stereo-image-proc, wfov-camera-msgs }:
 buildRosPackage {
   pname = "ros-kinetic-pointgrey-camera-driver";
-  version = "0.13.4";
+  version = "0.14.0-r1";
 
   src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/pointgrey_camera_driver-release/archive/release/kinetic/pointgrey_camera_driver/0.13.4-0.tar.gz";
-    name = "0.13.4-0.tar.gz";
-    sha256 = "5071819dbbc690a77113595dba44f1d6ba7baef7cd7ec55c4f120b11ed20e086";
+    url = "https://github.com/ros-drivers-gbp/pointgrey_camera_driver-release/archive/release/kinetic/pointgrey_camera_driver/0.14.0-1.tar.gz";
+    name = "0.14.0-1.tar.gz";
+    sha256 = "55606b5a931781aeec887cdf0b78e5b0cfc2e594474c110c6704a81fcddefc91";
   };
 
   buildType = "catkin";
